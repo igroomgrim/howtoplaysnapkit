@@ -11,6 +11,9 @@ import SnapKit
 
 class ViewController: UIViewController {
 
+    let button = UIButton()
+    var tapped = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.38, green:0.75, blue:0.88, alpha:1.0)
@@ -18,12 +21,15 @@ class ViewController: UIViewController {
         self.setupBottomRightButton()
         self.setupCustomNavBar()
         self.setupCustomDashboardView()
+        
+        // Update constraints
+        self.updateConstraints()
     }
     
     // MARK: Setup UI
     func setupBottomRightButton() {
         let superview = self.view
-        let button = UIButton()
+        
         button.layer.cornerRadius = 33
         button.setTitle("+", forState: .Normal)
         button.backgroundColor = UIColor.blackColor()
@@ -36,6 +42,8 @@ class ViewController: UIViewController {
             make.bottom.equalTo(superview.snp_bottom).offset(-20)
             make.right.equalTo(superview.snp_right).offset(-20)
         }
+        
+        button.addTarget(self, action: "customButtonTapped", forControlEvents: .TouchUpInside)
     }
 
     // MARK: Navbar Example
@@ -126,5 +134,63 @@ class ViewController: UIViewController {
         
     }
 
+    
+    // MARK: Modify Constraints
+    func updateConstraints() {
+        
+        var widthConstraint: Constraint? = nil
+        var heightConstraint: Constraint? = nil
+        
+        // snp_updateConstraints
+        self.button.layer.cornerRadius = 22
+        self.button.snp_updateConstraints { (make) -> Void in
+            widthConstraint = make.width.equalTo(44).constraint
+            heightConstraint = make.height.equalTo(44).constraint
+            make.bottom.equalTo(self.view.snp_bottom).offset(-20)
+            make.right.equalTo(self.view.snp_right).offset(-20)
+        }
+        tapped = true
+        
+        // References
+        widthConstraint?.uninstall()
+        heightConstraint?.uninstall()
+        widthConstraint?.updateOffset(40)
+        heightConstraint?.updateOffset(40)
+        
+    }
+    
+    func customButtonTapped() {
+        self.modifyConstraints()
+    }
+    
+    func modifyConstraints() {
+        
+        // snp_remakeConstraints
+        
+        if tapped {
+            
+            button.layer.cornerRadius = 33
+            self.button.snp_remakeConstraints { (make) -> Void in
+                make.width.equalTo(66)
+                make.height.equalTo(66)
+                make.bottom.equalTo(self.view.snp_bottom).offset(-20)
+                make.right.equalTo(self.view.snp_right).offset(-20)
+            }
+            tapped = false
+            
+            
+        } else {
+
+            self.button.layer.cornerRadius = 22
+            self.button.snp_remakeConstraints { (make) -> Void in
+                make.width.equalTo(44)
+                make.height.equalTo(44)
+                make.bottom.equalTo(self.view.snp_bottom).offset(-20)
+                make.left.equalTo(self.view).offset(20)
+            }
+            tapped = true
+        }
+        
+    }
 }
 
