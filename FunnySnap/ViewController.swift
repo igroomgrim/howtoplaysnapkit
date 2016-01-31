@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.38, green:0.75, blue:0.88, alpha:1.0)
         
         self.setupBottomRightButton()
+        self.setupCustomNavBar()
     }
     
     // MARK: Setup UI
@@ -36,7 +37,26 @@ class ViewController: UIViewController {
         }
     }
 
-    
+    // MARK: Navbar Example
+    func setupCustomNavBar() {
+        let superview = self.view
+        let navbar = UIView()
+        superview.addSubview(navbar)
+        navbar.backgroundColor = UIColor(red:0.38, green:0.85, blue:0.88, alpha:1)
+        navbar.snp_makeConstraints { (make) -> Void in
+            make.height.equalTo(64)
+            make.width.equalTo(superview)
+        }
+        
+        let titleLabel = UILabel()
+        navbar.addSubview(titleLabel)
+        titleLabel.text = "FunnySnap"
+        titleLabel.textColor = UIColor.blackColor()
+        titleLabel.sizeToFit()
+        titleLabel.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(navbar)
+        }
+    }
 
 }
 
