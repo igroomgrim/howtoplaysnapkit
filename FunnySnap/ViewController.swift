@@ -7,19 +7,36 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = UIColor(red:0.38, green:0.75, blue:0.88, alpha:1.0)
+        
+        self.setupBottomRightButton()
+    }
+    
+    // MARK: Setup UI
+    func setupBottomRightButton() {
+        let superview = self.view
+        let button = UIButton()
+        button.layer.cornerRadius = 33
+        button.setTitle("+", forState: .Normal)
+        button.backgroundColor = UIColor.blackColor()
+        superview.addSubview(button)
+        
+        button.snp_makeConstraints { (make) -> Void in
+            
+            make.width.equalTo(66)
+            make.height.equalTo(66)
+            make.bottom.equalTo(superview.snp_bottom).offset(-20)
+            make.right.equalTo(superview.snp_right).offset(-20)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 
 }
 
