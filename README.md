@@ -1,5 +1,5 @@
-# How to play SnapKit
-How to write auto layout constraints with SnapKit in iOS
+# How to write auto layout constraints with SnapKit in iOS
+![How to](https://cdn-images-1.medium.com/max/800/1*sml42JINW-uvAn9xJA0SHw.jpeg)
 
 Hello iOS developer pals! You definitely know auto layout for coding. It seems to be complicated to do, doesn’t it? I super extremely proudly present SnapKit for easier and more clearly way to code.
 
