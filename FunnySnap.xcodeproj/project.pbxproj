@@ -12,6 +12,7 @@
 		144C661F1C5DC76E00DB8D07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144C661D1C5DC76E00DB8D07 /* Main.storyboard */; };
 		144C66211C5DC76E00DB8D07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144C66201C5DC76E00DB8D07 /* Assets.xcassets */; };
 		144C66241C5DC76E00DB8D07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144C66221C5DC76E00DB8D07 /* LaunchScreen.storyboard */; };
+		80841AA7C0551FD4CF764BBD /* Pods_FunnySnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA021F1AEFBD83013C19057 /* Pods_FunnySnap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		144C66201C5DC76E00DB8D07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144C66231C5DC76E00DB8D07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		144C66251C5DC76E00DB8D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F63D7878E2F586E4D0DD513 /* Pods-FunnySnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySnap/Pods-FunnySnap.release.xcconfig"; sourceTree = "<group>"; };
+		80D652A3C702DE0596815FA9 /* Pods-FunnySnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySnap/Pods-FunnySnap.debug.xcconfig"; sourceTree = "<group>"; };
+		EAA021F1AEFBD83013C19057 /* Pods_FunnySnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunnySnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80841AA7C0551FD4CF764BBD /* Pods_FunnySnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		088761CAA5D8F418646E55D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80D652A3C702DE0596815FA9 /* Pods-FunnySnap.debug.xcconfig */,
+				2F63D7878E2F586E4D0DD513 /* Pods-FunnySnap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		144C660D1C5DC76D00DB8D07 = {
 			isa = PBXGroup;
 			children = (
 				144C66181C5DC76E00DB8D07 /* FunnySnap */,
 				144C66171C5DC76E00DB8D07 /* Products */,
+				088761CAA5D8F418646E55D8 /* Pods */,
+				51DFD855524051C6C8F2A45C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = FunnySnap;
 			sourceTree = "<group>";
 		};
+		51DFD855524051C6C8F2A45C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAA021F1AEFBD83013C19057 /* Pods_FunnySnap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 144C66281C5DC76E00DB8D07 /* Build configuration list for PBXNativeTarget "FunnySnap" */;
 			buildPhases = (
+				1484080B2A47C2BBC4335AA9 /* Check Pods Manifest.lock */,
 				144C66121C5DC76D00DB8D07 /* Sources */,
 				144C66131C5DC76D00DB8D07 /* Frameworks */,
 				144C66141C5DC76D00DB8D07 /* Resources */,
+				9CA913548A80D91D4C7C682F /* Embed Pods Frameworks */,
+				B7BE3DB20FAD733349FDDF10 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1484080B2A47C2BBC4335AA9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9CA913548A80D91D4C7C682F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunnySnap/Pods-FunnySnap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7BE3DB20FAD733349FDDF10 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunnySnap/Pods-FunnySnap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		144C66121C5DC76D00DB8D07 /* Sources */ = {
@@ -245,6 +320,7 @@
 		};
 		144C66291C5DC76E00DB8D07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80D652A3C702DE0596815FA9 /* Pods-FunnySnap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FunnySnap/Info.plist;
@@ -256,6 +332,7 @@
 		};
 		144C662A1C5DC76E00DB8D07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F63D7878E2F586E4D0DD513 /* Pods-FunnySnap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FunnySnap/Info.plist;
@@ -284,6 +361,7 @@
 				144C662A1C5DC76E00DB8D07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
